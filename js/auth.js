@@ -1,24 +1,3 @@
-const loginBox = `
-<div class="login">
-
-<h2>PPFMS Login</h2>
-
-<input id="username" placeholder="Username">
-
-<input id="password" type="password" placeholder="Password">
-
-<button onclick="login()">
-Login
-</button>
-
-<p id="msg"></p>
-
-</div>
-`;
-
-document.body.innerHTML = loginBox;
-
-
 async function login(){
 
 let username=document.getElementById("username").value;
@@ -38,7 +17,14 @@ localStorage.setItem(
 JSON.stringify(result.user)
 );
 
-location.reload();
+
+document.getElementById("login").style.display="none";
+
+document.getElementById("app").style.display="block";
+
+document.getElementById("welcome").innerHTML =
+"Welcome " + result.user.name;
+
 
 }
 else{
