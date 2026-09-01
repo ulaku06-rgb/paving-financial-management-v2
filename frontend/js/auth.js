@@ -1,21 +1,51 @@
+const loginBox = `
+<div class="login">
+
+<h2>PPFMS Login</h2>
+
+<input id="username" placeholder="Username">
+
+<input id="password" type="password" placeholder="Password">
+
+<button onclick="login()">
+Login
+</button>
+
+<p id="msg"></p>
+
+</div>
+`;
+
+document.body.innerHTML = loginBox;
+
+
 async function login(){
-const r=await fetch(API_URL+'/api/login',{
-method:'POST',
-headers:{'Content-Type':'application/json'},
-body:JSON.stringify({
-username:username.value,
-password:password.value
-})
-})
 
-const d=await r.json()
+let username=document.getElementById("username").value;
+let password=document.getElementById("password").value;
 
-if(d.user){
-localStorage.user=JSON.stringify(d.user)
-document.getElementById('login').style.display='none'
-document.getElementById('app').style.display='block'
-welcome.innerHTML='Halo '+d.user.name+' ('+d.user.role+')'
-}else{
-alert('Login gagal')
+
+let result = await apiLogin(
+    username,
+    password
+);
+
+
+if(result.user){
+
+localStorage.setItem(
+"user",
+JSON.stringify(result.user)
+);
+
+location.reload();
+
 }
+else{
+
+document.getElementById("msg").innerHTML =
+"Login gagal";
+
+}
+
 }
