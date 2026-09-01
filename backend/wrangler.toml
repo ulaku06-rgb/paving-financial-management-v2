@@ -1,0 +1,8 @@
+name = "ppfms-api"
+main = "src/index.js"
+compatibility_date = "2026-09-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "ppfms-db"
+database_id = "YOUR_DATABASE_ID"

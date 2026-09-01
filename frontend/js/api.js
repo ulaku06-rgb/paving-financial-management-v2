@@ -1,0 +1,1 @@
+const API_URL='https://YOUR-WORKER.workers.dev';
