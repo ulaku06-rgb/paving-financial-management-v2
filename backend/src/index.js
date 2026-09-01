@@ -141,3 +141,38 @@ app.post('/api/expenses', async (c)=>{
 
 
 export default app
+app.get('/api/dashboard',async c=>{
+
+const rab =
+await c.env.DB.prepare(
+"SELECT SUM(rab) total FROM projects"
+).first();
+
+
+const biaya =
+await c.env.DB.prepare(
+"SELECT SUM(amount) total FROM expenses"
+).first();
+
+
+const income =
+await c.env.DB.prepare(
+"SELECT SUM(amount) total FROM incomes"
+).first();
+
+
+return c.json({
+
+rab: rab.total || 0,
+
+biaya: biaya.total || 0,
+
+income: income.total || 0,
+
+profit:
+(income.total || 0) -
+(biaya.total || 0)
+
+});
+
+});
