@@ -42,3 +42,31 @@ project_id INTEGER,
 description TEXT,
 amount REAL
 );
+CREATE TABLE IF NOT EXISTS projects (
+
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+
+name TEXT,
+
+client TEXT,
+
+location TEXT,
+
+rab INTEGER DEFAULT 0
+
+);
+
+
+CREATE TABLE IF NOT EXISTS incomes (
+
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+
+project_id INTEGER,
+
+date TEXT,
+
+description TEXT,
+
+amount INTEGER DEFAULT 0
+
+);
